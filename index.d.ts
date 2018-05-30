@@ -1,5 +1,5 @@
 interface RetryStrategyOptions {
-  error: NodeJS.ErrnoException;
+  error: Error;
   total_retry_time: number;
   times_connected: number;
   attempt: number;
@@ -30,6 +30,7 @@ interface ClientOpts {
   rename_commands?: { [command: string]: string } | null;
   tls?: any;
   prefix?: string;
+  namespace?: string;
   retry_strategy?: RetryStrategy;
 }
 
