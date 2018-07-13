@@ -16,12 +16,7 @@ class MaybeStoreRedis {
   }
 
   get(key) {
-    return this.redis.get(key).then((value) => {
-      if (value === null) {
-        return undefined;
-      }
-      return value;
-    });
+    return this.redis.get(key).then(value => (value === null ? undefined : value));
   }
 
   set(key, value, ttl) {
