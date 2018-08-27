@@ -12,7 +12,7 @@ class MaybeStoreRedis {
   }
 
   _getNamespace() {
-    return `namespace:${this.namespace || 'maybe-store'}`;
+    return `${this.namespace || 'maybe-store'}:namespace`;
   }
 
   get(key) {
