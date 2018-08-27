@@ -13,9 +13,9 @@
 ## 安装
 
 ```sh
-$ yarn add @toomee/maybe-store-redis # 推荐
+$ yarn add @toomee/maybe-store-redis redis # 推荐
 # 或者
-$ npm i -S @toomee/maybe-store-redis
+$ npm i -S @toomee/maybe-store-redis redis
 ```
 
 ## 使用
