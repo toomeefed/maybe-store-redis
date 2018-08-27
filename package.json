@@ -1,6 +1,6 @@
 {
   "name": "@toomee/maybe-store-redis",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Redis storage adapter for maybe-store",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,9 @@
   },
   "homepage": "https://github.com/toomeefed/maybe-store-redis#readme",
   "dependencies": {
-    "pify": "^3.0.0",
+    "pify": "^3.0.0"
+  },
+  "peerDependencies": {
     "redis": "^2.8.0"
   },
   "devDependencies": {
