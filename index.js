@@ -2,8 +2,9 @@ const pify = require('pify');
 const redis = require('redis');
 
 class MaybeStoreRedis {
-  constructor(opts) {
+  constructor(opts = {}) {
     this.ttlSupport = true;
+    this.namespace = opts.namespace || 'maybe-store';
     const client = redis.createClient(opts);
     this.redis = ['get', 'set', 'sadd', 'del', 'srem', 'smembers'].reduce((obj, method) => {
       obj[method] = pify(client[method]).bind(client);
@@ -12,7 +13,7 @@ class MaybeStoreRedis {
   }
 
   _getNamespace() {
-    return `${this.namespace || 'maybe-store'}:namespace`;
+    return `${this.namespace}:namespace`;
   }
 
   get(key) {
