@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/toomeefed/maybe-store-redis#readme",
   "dependencies": {
-    "pify": "^3.0.0"
+    "pify": "^4.0.1"
   },
   "peerDependencies": {
     "redis": "^2.8.0"
