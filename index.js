@@ -6,7 +6,7 @@ class MaybeStoreRedis {
     this.ttlSupport = true;
     this.namespace = opts.namespace || 'maybe-store';
     const client = redis.createClient(opts);
-    this.redis = ['get', 'set', 'sadd', 'del', 'srem', 'smembers'].reduce((obj, method) => {
+    this.redis = ['get', 'set', 'sadd', 'del', 'srem', 'smembers', 'quit'].reduce((obj, method) => {
       obj[method] = pify(client[method]).bind(client);
       return obj;
     }, {});
@@ -45,6 +45,10 @@ class MaybeStoreRedis {
       .smembers(this._getNamespace())
       .then(keys => this.redis.del.apply(null, keys.concat(this._getNamespace())))
       .then(() => undefined);
+  }
+
+  quit() {
+    return this.redis.quit();
   }
 }
 

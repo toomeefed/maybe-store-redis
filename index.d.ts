@@ -62,6 +62,9 @@ declare class MaybeStoreRedis {
 
   /** Delete all entries in the current namespace. */
   clear(): Promise<void>;
+
+  /** Close the connection. */
+  quit(): Promise<'OK'>;
 }
 
 export = MaybeStoreRedis;

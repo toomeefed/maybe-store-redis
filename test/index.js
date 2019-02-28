@@ -4,8 +4,12 @@ import MaybeStoreRedis from '..';
 
 const store = new MaybeStoreRedis();
 
+let isQuit = false;
+
 test.afterEach(async () => {
-  await store.clear();
+  if (!isQuit) {
+    await store.clear();
+  }
 });
 
 test.serial('MaybeStoreRedis#set', async (t) => {
@@ -43,4 +47,9 @@ test.serial('MaybeStoreRedis#clear', async (t) => {
   await store.clear();
   t.is(await store.get('foo'), undefined);
   t.is(await store.get('baz'), undefined);
+});
+
+test.serial('MaybeStoreRedis#quit', async (t) => {
+  t.is(await store.quit(), 'OK');
+  isQuit = true;
 });
